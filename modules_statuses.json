@@ -1,0 +1,6 @@
+{
+    "Admin": true,
+    "Migration": true,
+    "CreateAvSolutionsTable": true,
+    "Mc": true
+}

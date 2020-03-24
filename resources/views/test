@@ -1,0 +1,29 @@
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="{{asset('css/web-view/product/av-product-detail.css')}}">
+
+<div class="container">
+	<div class="row">
+	
+	</div>
+	<div class="">
+                <ul id="glasscase" class="gc-start">
+                    <li><img src="https://source.unsplash.com/featured?technology" alt="Text" data-gc-caption="Your caption text" /></li>
+                    <li><img src="https://source.unsplash.com/featured?Technology" alt="Text" /></li>
+                    <li><img src="https://source.unsplash.com/featured?tEchnology" alt="Text" /></li>
+                    <li><img src="https://source.unsplash.com/featured?teChnology" alt="Text" /></li>
+                    <li><img src="https://source.unsplash.com/featured?TecHnology" alt="Text" /></li>
+                    <li><img src="https://source.unsplash.com/featured?TechNology" alt="Text" /></li>
+                </ul>
+            </div><a href="http://tinycomp.net/products/glasscase-jquery-product-image-zoom-plugin/examples.aspx">For More Guide</a>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+        $(document).ready( function () {
+            //If your <ul> has the id "glasscase"
+            $('#glasscase').glassCase({ 'thumbsPosition': 'bottom', 'widthDisplay' : 560});
+        });
+    </script>
+    <script src="{{asset('js/web-view/product/av-product-detail.js')}}"></script>

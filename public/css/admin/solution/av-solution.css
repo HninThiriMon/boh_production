@@ -1,0 +1,190 @@
+
+/* start create model add plus category */
+
+ .entry:not(:first-of-type)
+ {
+    margin-top: 10px;
+ }
+
+ .glyphicon
+ {
+    font-size: 12px;
+ }
+
+/*  End create model add plus category  */
+
+ /* <!-- Start Create modal --> */
+
+    #cover_imagepic{
+        display: none;
+       }
+
+    #main_imagepic{
+        display: none;
+       }
+
+    #image_1pic{
+        display: none;
+       }
+
+    #image_2pic{
+        display: none;
+       }
+
+    #image_3pic{
+        display: none;
+       }
+    
+    #image_4pic{
+        display: none;
+       }
+
+    .cover_imagebtn{
+         cursor: pointer;
+      }
+
+    .main_imagebtn{
+         cursor: pointer;
+      }
+
+    .image_1btn{
+        cursor: pointer;
+    }
+
+    .image_2btn{
+        cursor: pointer;
+    }
+
+    .image_3btn{
+        cursor: pointer;
+    }
+
+    .image_4btn{
+        cursor: pointer;
+    }
+
+    #cover_image {
+        width:900px;
+        height:170px;
+        margin-top:20px;
+    }
+
+ #main_image {
+        width:450px;
+        height:300px;
+        margin-top:20px;
+ }
+
+ #image_1 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+ #image_2 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+ #image_3 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+ #image_4 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+/* <!-- End Create modal --> */
+
+/* <!-- Start Update modal --> */
+
+#edit_cover_imagepic{
+        display: none;
+       }
+
+#edit_main_imagepic{
+        display: none;
+       }
+
+    #edit_image_1pic{
+        display: none;
+       }
+
+    #edit_image_2pic{
+        display: none;
+       }
+
+    #edit_image_3pic{
+        display: none;
+       }
+    
+    #edit_image_4pic{
+        display: none;
+       }
+
+    .edit_cover_imagebtn{
+         cursor: pointer;
+      }
+
+    .edit_main_imagebtn{
+         cursor: pointer;
+      }
+
+    .edit_image_1btn{
+        cursor: pointer;
+    }
+
+    .edit_image_2btn{
+        cursor: pointer;
+    }
+
+    .edit_image_3btn{
+        cursor: pointer;
+    }
+
+    .edit_image_4btn{
+        cursor: pointer;
+    }
+
+    #edit_cover_image {
+        width:900px;
+        height:170px;
+        margin-top:20px;
+ }
+
+ #edit_main_image {
+        width:450px;
+        height:300px;
+        margin-top:20px;
+ }
+
+ #edit_image_1 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+ #edit_image_2 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+ #edit_image_3 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+ #edit_image_4 {
+        width:300px;
+        height:130px;
+        margin-top:20px;
+ }
+
+/* <!-- End Update modal --> */
+

@@ -1,0 +1,644 @@
+@extends('admin::layouts/master')
+@section('admin::title','AV Products')
+@section('admin::content')
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+/* start create model add plus category */
+
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
+
+/*  End create model add plus category  */
+
+/*  multi file upload preview  */
+
+        .preview-images-zone {
+          width: 100%;
+          border: 1px solid #ddd;
+          min-height: 180px;
+          /* display: flex; */
+          padding: 5px 5px 0px 5px;
+          position: relative;
+          overflow:auto;
+      }
+      .preview-images-zone > .preview-image:first-child {
+          height: 185px;
+          width: 185px;
+          position: relative;
+          margin-right: 5px;
+      }
+      .preview-images-zone > .preview-image {
+          height: 90px;
+          width: 90px;
+          position: relative;
+          margin-right: 5px;
+          float: left;
+          margin-bottom: 5px;
+      }
+      .preview-images-zone > .preview-image > .image-zone {
+          width: 100%;
+          height: 100%;
+      }
+      .preview-images-zone > .preview-image > .image-zone > img {
+          width: 100%;
+          height: 100%;<input type="file" id="update-image" name="update-product_images[]" style="display: none;" class="form-control" multiple>view-image > .tools-edit-image {
+          position: absolute;
+          z-index: 100;
+          color: #fff;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
+          display: none;
+      }
+      .preview-images-zone > .preview-image > .image-cancel {
+          font-size: 18px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-weight: bold;
+          margin-right: 10px;
+          cursor: pointer;
+          display: none;
+          z-index: 100;
+      }
+      .preview-image:hover > .image-zone {
+          cursor: move;
+          opacity: .5;
+      }
+      .preview-image:hover > .tools-edit-image,
+      .preview-image:hover > .image-cancel {
+          display: block;
+      }
+      .ui-sortable-helper {
+          width: 90px !important;
+          height: 90px !important;
+      }
+
+      .container {
+          padding-top: 50px;
+}
+
+/* start update preview images */
+
+        .update-preview-images-zone {
+          width: 100%;
+          border: 1px solid #ddd;
+          min-height: 180px;
+          /* display: flex; */
+          padding: 5px 5px 0px 5px;
+          position: relative;
+          overflow:auto;
+      }
+      .update-preview-images-zone > .update-preview-image:first-child {
+          height: 185px;
+          width: 185px;
+          position: relative;
+          margin-right: 5px;
+      }
+      .update-preview-images-zone > .update-preview-image {
+          height: 90px;
+          width: 90px;
+          position: relative;
+          margin-right: 5px;
+          float: left;
+          margin-bottom: 5px;
+      }
+      .update-preview-images-zone > .update-preview-image > .update-image-zone {
+          width: 100%;
+          height: 100%;
+      }
+      .update-preview-images-zone > .update-preview-image > .update-image-zone > img {
+          width: 100%;
+          height: 100%;
+      }
+      .update-preview-images-zone > .update-preview-image > .update-tools-edit-image {
+          position: absolute;
+          z-index: 100;
+          color: #fff;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
+          display: none;
+      }
+      .update-preview-images-zone > .update-preview-image > .update-image-cancel {
+          font-size: 18px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-weight: bold;
+          margin-right: 10px;
+          cursor: pointer;
+          display: none;
+          z-index: 100;
+      }
+      .update-preview-image:hover > .update-image-zone {
+          cursor: move;
+          opacity: .5;
+      }
+      .update-preview-image:hover > .update-tools-edit-image,
+      .update-preview-image:hover > .update-image-cancel {
+          display: block;
+      }
+      .update-ui-sortable-helper {
+          width: 90px !important;
+          height: 90px !important;
+      }
+
+      .update-container {
+          padding-top: 50px;
+}
+
+
+
+
+/*  end multi file upload preview  */
+
+
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    margin-bottom: 2%;
+    
+}
+.form-control{
+    /* border-radius:1.5rem; */
+    /* color: #333 !important; */
+}
+.btnSubmit
+{
+    float:right;
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+}
+</style>  
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+           <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="breadcome-list">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                          <div class="breadcomb-wp">
+                                           <div class="breadcomb-ctn">
+                                              <h2> Audio & Visual Products </h2> <br>
+                                              <div class="add-product">
+                                               <a data-toggle="modal" data-target=".bd-example-modal-lg" href=""> Add </a>
+                                              </div>
+                                           </div>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+          <div class="product-status mg-b-30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="product-status-wrap">
+                                <h4 style="color:green;"> List of Products ( Audio & Visual )</h4>
+                                
+                                <table>
+                                    <tr>
+                                        <th>Id.</th>
+                                        <th>Image</th>
+                                        <th>Solution Name</th>
+                                        <th style="color:orange;"> Product Name </th>
+                                        <th>Brand</th>
+                                        <th>Price</th>
+                                        <th>Speciation</th>
+                                        <th>Setting</th>
+                                    </tr>
+                                    @if(isset($avProducts))
+                                    @foreach($avProducts as $avProduct)
+                                    <tr>
+                                        <td width="10%"></td>
+                                        <td width="10%"><img src="" alt="" /></td>
+                                        <td width="10%">{{$avProduct->solution_name}} 
+                                        </td>
+                                        <td width="10%" style="color:orange;">{{$avProduct->product_name}}</td>
+                                        <td width="10%">{{$avProduct->brand_name}}</td>
+                                        <td width="10%">{{$avProduct->price}}</td>
+                                        
+
+                                        <?php 
+                                        $specifications = json_decode($avProduct->specification, true);
+                                        ?>
+                                        <td width="30%">
+                                            @foreach ($specifications as $specification)
+                                            {{$specification}} ,<br>
+                                            @endforeach
+                                        </td>
+
+                                        <td>
+                                            <button data-toggle="modal" data-target=".edit-modal-lg" data-toggle="tooltip" onclick="updateProduct();"  id="category" title="Edit" class="pd-setting-ed multi-preview"><i class="fas fa-edit" aria-hidden="true"></i></button>
+                                            
+                                            <a href="">
+                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fas fa-trash" aria-hidden="true"></i></button></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                </table>
+                                <div class="custom-pagination">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+
+    <!-- Start Create modal -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg"></p> 
+            <div class="modal-content">
+                <div class="modal-header note">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2 class="modal-title" id="exampleModalLongTitle"> Create New Product ( Audio & Visual )</h2>
+                    
+                </div>
+                    <form action="{{url('boh/add_av_product')}}" method="post"  enctype="multipart/form-data" >
+                        @csrf
+                        <div class="modal-body">
+                        
+                                <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="form-group">
+                                                <label for=""> Solution Name :</label>
+                                                <select name="solution_name" required="" class="form-control">
+                                                @foreach($avSolutionNames as $avSolutionName)
+                                                <option value="{{$avSolutionName->id}}">{{$avSolutionName->name}}</option>
+                                                @endforeach
+                                               </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for=""> Product Name :</label>
+                                                    <input type="text" name="product_name" class="form-control" required/>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for=""> Brand Name :</label>
+                                                    <input type="text" name="brand_name" class="form-control" required/>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for=""> Price :</label>
+                                                    <input type="text" name="price" class="form-control" required/>
+                                                </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                        <label for=""> Specification :</label>
+                                        <div class="field_wrapper">
+                                        <input type="text" class="form-control" name="specification[]" value=""/>
+                                            <a href="javascript:void(0);" class="add_button" title="Add field">
+                                            <i class="fas fa-plus-circle"></i></a>
+                                        </div>
+                                        </div>
+                                        
+                                </div>
+                            
+                                <div class="row">
+                                <fieldset class="form-group">
+                                     <a href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
+                                     <input type="file" id="pro-image" name="product_images[]" style="display: none;" class="form-control" multiple>
+                                 </fieldset>
+                                 <div class="preview-images-zone">
+                                     
+                                 </div>
+                                </div>
+                        
+                        </div>    
+                        
+                        <div class="modal-footer">
+                            <input type="submit" value="Save" class="btn btnSubmit">
+                            <button type="button" class="btn btnSubmit" data-dismiss="modal" aria-label="Close"
+                            >Cancel</button>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Create modal -->
+
+
+    <!-- Start Update modal -->
+    <div class="modal fade edit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg"></p>
+            <div class="modal-content">
+                <div class="modal-header note">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2 class="modal-title" id="exampleModalLongTitle"> Update Product ( Audio & Visual )</h2>
+               </div>
+                    <form action="{{url('boh/update_av_solution')}}" method="post" enctype="multipart/form-data" >
+                        @csrf
+                        <div class="modal-body">
+                        
+                                <div class="row">
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for=""> Solution Name :</label>
+                                                <select name="solution_name" required="" class="form-control">
+                                                @foreach($avSolutionNames as $avSolutionName)
+                                                <option value="{{$avSolutionName->id}}">{{$avSolutionName->name}}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for=""> Product Name :</label>
+                                                <input type="text" name="product_name" class="form-control" required/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for=""> Brand Name :</label>
+                                                <input type="text" name="brand_name" class="form-control" required/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for=""> Price :</label>
+                                                <input type="text" name="price" class="form-control" required/>
+                                            </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for=""> Specification :</label>
+                                        <div class="field_wrapper">
+                                            <input type="text" class="form-control" name="update_specification[]" value=""/>
+                                            <a href="javascript:void(0);" class="update_add_button" title="Add field">
+                                            <i class="fas fa-plus-circle"></i></a>
+                                        </div>
+                                    </div> 
+                                </div>
+                            
+                                <div class="row">
+                                    <fieldset class="form-group">
+                                        <a href="javascript:void(0)" onclick="$('#update-image').click()">Upload Image</a>
+                                        <input type="file" id="update-image" name="update-product_images[]" style="display: none;" class="form-control" multiple />
+                                    </fieldset>
+                                    <div class="update-preview-images-zone">
+                                        
+                                    </div>
+
+                                </div>
+                        
+                        </div>    
+                        
+                        <div class="modal-footer">
+                            <input type="submit" value="Save" class="btn btnSubmit">
+                            <button type="button" class="btn btnSubmit" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Update modal -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+   
+ //  Start Update modal 
+    function updateSolution(id) {
+        $.get( "{{url('boh/edit_solution')}}", { id } )
+        .done(function( data ) {
+            $('#edit_s_id').val(data.id);
+            $('#edit_name').val(data.name);
+            $('#edit_description').val(data.description);
+            $('#edit_list_1').val(data.list_1);
+            $('#edit_list_2').val(data.list_2);
+            $('#edit_list_3').val(data.list_3);
+            $('#edit_list_4').val(data.list_4);
+            var main_image_e = '../assets/img/solutions/'+data.main_image;
+            var image_1_e = '../assets/img/solutions/'+data.image_1;
+            var image_2_e = '../assets/img/solutions/'+data.image_2;
+            var image_3_e = '../assets/img/solutions/'+data.image_3;
+            var image_4_e = '../assets/img/solutions/'+data.image_4;
+            $('.edit_main_image').attr('src',main_image_e);
+            $('.edit_image_1').attr('src',image_1_e);
+            $('.edit_image_2').attr('src',image_2_e);
+            $('.edit_image_3').attr('src',image_3_e);
+            $('.edit_image_4').attr('src',image_4_e);
+        });
+    };
+
+ //  End Update modal 
+
+
+
+
+//  multifile preview 
+
+
+// create model multifile preview 
+
+        $(document).ready(function() {
+            document.getElementById('pro-image').addEventListener('change', readImage, false);
+            
+            $(document).on('click', '.image-cancel', function() {
+                let no = $(this).data('no');
+                $(".preview-image.preview-show-"+no).remove();
+            });
+        });
+
+
+
+        var num = 4;
+        function readImage() {
+            if (window.File && window.FileList && window.FileReader) {
+                var files = event.target.files; //FileList object
+                var output = $(".preview-images-zone");
+
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('image')) continue;
+                     var picReader = new FileReader();
+                    
+                    picReader.addEventListener('load', function (event) {
+                        var picFile = event.target;
+                        var html =  '<div class="preview-image preview-show-' + num + '">' +
+                                    '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                                    '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                                    '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
+                                    '</div>';
+
+                        output.append(html);
+                        num = num + 1;
+                    });
+
+                    picReader.readAsDataURL(file);
+                }
+                 // $("#pro-image").val('');
+            } else {
+                console.log('Browser not support');
+            }
+        }
+
+       
+
+
+ // End create model multifile preview 
+
+
+
+// start update model multifile preview 
+
+
+$( ".multi-preview" ).click(function() {
+  
+  document.getElementById('update-image').addEventListener('change', readImage, false);
+            
+            $(document).on('click', '.update-image-cancel', function() {
+                let no = $(this).data('no');
+                $(".update-preview-image.update-preview-show-"+no).remove();
+            });
+       
+
+        var num = 4;
+        function readImage() {
+            if (window.File && window.FileList && window.FileReader) {
+                var files = event.target.files; //FileList object
+                var output = $(".update-preview-images-zone");
+
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('image')) continue;
+                     var picReader = new FileReader();
+                    
+                    picReader.addEventListener('load', function (event) {
+                        var picFile = event.target;
+                        var html =  '<div class="update-preview-image update-preview-show-' + num + '">' +
+                                    '<div class="update-image-cancel" data-no="' + num + '">x</div>' +
+                                    '<div class="update-image-zone"><img id="update-image-' + num + '" src="' + picFile.result + '"></div>' +
+                                    '<div class="update-tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light update-btn-edit-image">edit</a></div>' +
+                                    '</div>';
+                        output.append(html);
+                        num = num + 1;
+                    });
+
+                    picReader.readAsDataURL(file);
+                }
+                 // $("#pro-image").val('');
+            } else {
+                console.log('Browser not support');
+            }
+        }
+
+     
+
+// End update model multifile preview 
+
+
+
+// End multifile preview 
+
+// start create model add plus category 
+      
+
+   $(document).ready(function(){
+       var maxField = 10; //Input fields increment limitation
+       var addButton = $('.add_button'); //Add button selector
+       var wrapper = $('.field_wrapper'); //Input field wrapper
+       var fieldHTML = '<div><input type="text" name="specification[]" class="form-control" value=""/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-minus-circle"></a></div>'; //New input field html 
+       var x = 1; //Initial field counter is 1
+       
+       //Once add button is clicked
+       $(addButton).click(function(){
+           //Check maximum number of input fields
+           if(x < maxField){ 
+               x++; //Increment field counter
+               $(wrapper).append(fieldHTML); //Add field html
+           }
+       });
+       
+       //Once remove button is clicked
+       $(wrapper).on('click', '.remove_button', function(e){
+           e.preventDefault();
+           $(this).parent('div').remove(); //Remove field html
+           x--; //Decrement field counter
+       });
+   });
+   
+   
+// End create model add plus category 
+
+// start update model add plus category 
+      
+
+
+$( "#category" ).click(function() {
+  alert( "category" );
+  
+       var maxField = 10; //Input fields increment limitation
+       var addButton = $('.update_add_button'); //Add button selector
+       var wrapper = $('.field_wrapper'); //Input field wrapper
+       var fieldHTML = '<div><input type="text" name="update_specification[]" class="form-control" value=""/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-minus-circle"></a></div>'; //New input field html 
+       var x = 1; //Initial field counter is 1
+       
+       //Once add button is clicked
+       $(addButton).click(function(){
+           //Check maximum number of input fields
+           if(x < maxField){ 
+               x++; //Increment field counter
+               $(wrapper).append(fieldHTML); //Add field html
+           }
+       });
+       
+       //Once remove button is clicked
+       $(wrapper).on('click', '.remove_button', function(e){
+           e.preventDefault();
+           $(this).parent('div').remove(); //Remove field html
+           x--; //Decrement field counter
+       });
+   });
+ 
+
+// End update model add plus category 
+ 
+ </script>
+
+@endsection                              

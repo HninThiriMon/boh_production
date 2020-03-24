@@ -1,0 +1,28 @@
+<div class="col-12 col-sm-3">
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-dark text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+                <ul class="list-group category_solution">
+                @foreach($elvSolutions as $elvSolution)
+                    <li class="list-group-item" onclick="solutionFilter('{{$elvSolution->name}}');"><a> {{$elvSolution->name}}</a></li>
+                @endforeach
+                </ul>
+            </div>
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-dark text-white text-uppercase">Price ( USD )</div>
+                <ul class="list-group category_price">
+                    <li class="list-group-item"><a href=""> $ 0 - 500 </a></li>
+                    <li class="list-group-item"><a href=""> $ 500 - 1000 </a></li>
+                    <li class="list-group-item"><a href=""> $ 1000 - 5000</a></li>
+                    <li class="list-group-item"><a href=""> $ 5000 - 10000</a></li>
+                    <li class="list-group-item"><a href=""> $ 10000 - above</a></li>
+                </ul>
+            </div>
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-dark text-white text-uppercase">Brand</div>
+                 <ul class="list-group category_price">
+                     @foreach($brands as $brand)
+                     <li class="list-group-item"><a href="category.html">{{$brand->name}}</a></li>
+                     @endforeach
+                </ul>
+            </div>
+     </div>
